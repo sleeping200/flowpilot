@@ -16,7 +16,7 @@ export ZMQ_MESSAGING_PROTOCOL="TCP" # TCP, INTER_PROCESS, SHARED_MEMORY
 #export DEVICE_ADDR="127.0.0.1" # connect to external device running flowpilot over same network. useful for livestreaming.
 
 export SIMULATION="0"
-export FINGERPRINT="LEXUS RX 2020"
+#export FINGERPRINT="LEXUS RX 2020"
 
 ## android specific ##
 export USE_SNPE="1" # only works for snapdragon devices.
