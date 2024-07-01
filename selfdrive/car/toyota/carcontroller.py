@@ -42,10 +42,10 @@ class CarController:
     pcm_cancel_cmd = CC.cruiseControl.cancel
     lat_active = CC.latActive and abs(CS.out.steeringTorque) < MAX_USER_TORQUE
 
-    print(sLogger)
+    print(sLogger test line 45)
     # print debug data 
-    sLogger.Send("0ALL set!")
-    print(sLogger end)
+sLogger.Send("0ALL set!")
+    print(sLogger end test line 48)
 
     # gas and brake
     if self.CP.enableGasInterceptor and CC.longActive:
@@ -139,6 +139,8 @@ class CarController:
       can_sends.append(create_gas_interceptor_command(self.packer, interceptor_gas_cmd, self.frame // 2))
       self.gas = interceptor_gas_cmd
 
+print(slogger test line 142)
+
     if self.CP.carFingerprint != CAR.PRIUS_V:
       # ui mesg is at 1Hz but we send asap if:
       # - there is something to display
@@ -167,6 +169,9 @@ class CarController:
     for addr, cars, bus, fr_step, vl in STATIC_DSU_MSGS:
       if self.frame % fr_step == 0 and self.CP.enableDsu and self.CP.carFingerprint in cars:
         can_sends.append(make_can_msg(addr, vl, bus))
+
+print(slogger test line 173)
+
 
     new_actuators = actuators.copy()
     new_actuators.steer = apply_steer / CarControllerParams.STEER_MAX
