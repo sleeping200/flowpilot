@@ -10,11 +10,6 @@ from selfdrive.car.toyota.values import CAR, STATIC_DSU_MSGS, NO_STOP_TIMER_CAR,
                                         UNSUPPORTED_DSU_CAR
 from opendbc.can.packer import CANPacker
 
-print(sLogger test line 13)
-sLogger.Send("0ALL set!")
-print(sLogger end test line 15)
-
-
 VisualAlert = car.CarControl.HUDControl.VisualAlert
 
 # EPS faults if you apply torque while the steering rate is above 100 deg/s for too long
@@ -46,6 +41,7 @@ class CarController:
     pcm_cancel_cmd = CC.cruiseControl.cancel
     lat_active = CC.latActive and abs(CS.out.steeringTorque) < MAX_USER_TORQUE
 
+    
     # gas and brake
     if self.CP.enableGasInterceptor and CC.longActive:
       MAX_INTERCEPTOR_GAS = 0.5
