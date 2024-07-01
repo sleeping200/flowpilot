@@ -121,6 +121,7 @@ class Controls:
     sounds_available = True # TODO HARDWARE.get_sound_card_online()
 
     car_recognized = self.CP.carName != 'mock'
+    Print("Line test 124")
 
     controller_available = self.CI.CC is not None and not passive and not self.CP.dashcamOnly
     self.read_only = not car_recognized or not controller_available or self.CP.dashcamOnly
