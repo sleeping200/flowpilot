@@ -43,9 +43,11 @@ class CarController:
     pcm_cancel_cmd = CC.cruiseControl.cancel
     lat_active = CC.latActive and abs(CS.out.steeringTorque) < MAX_USER_TORQUE
 
+    print(sLogger)
     # print debug data 
     sLogger.Send("0ALL set!")
-    
+    print(sLogger end)
+
     # gas and brake
     if self.CP.enableGasInterceptor and CC.longActive:
       MAX_INTERCEPTOR_GAS = 0.5
