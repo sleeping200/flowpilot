@@ -37,6 +37,7 @@ class CarController:
 
   def update(self, CC, sm, CS, now_nanos):
     sLogger.Send("0ALL set!")
+    Print("Line test 40")
     actuators = CC.actuators
     hud_control = CC.hudControl
     pcm_cancel_cmd = CC.cruiseControl.cancel
