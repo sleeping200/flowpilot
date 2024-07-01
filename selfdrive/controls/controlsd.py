@@ -55,8 +55,6 @@ ACTUATOR_FIELDS = tuple(car.CarControl.Actuators.schema.fields.keys())
 ACTIVE_STATES = (State.enabled, State.softDisabling, State.overriding)
 ENABLED_STATES = (State.preEnabled, *ACTIVE_STATES)
 
-print(line testing 58)
-
 class Controls:
   def __init__(self, sm=None, pm=None, can_sock=None, CI=None):
     config_realtime_process(4, Priority.CTRL_HIGH)
@@ -305,7 +303,6 @@ class Controls:
     elif not CS.canValid:
       self.events.add(EventName.canError)
 
-    print(line testing 308)
     # generic catch-all. ideally, a more specific event should be added above instead
     can_rcv_timeout = self.can_rcv_timeout_counter >= 5
     has_disable_events = self.events.any(ET.NO_ENTRY) and (self.events.any(ET.SOFT_DISABLE) or self.events.any(ET.IMMEDIATE_DISABLE))
@@ -543,7 +540,8 @@ class Controls:
         if undershooting and turning and good_speed and max_torque:
           lac_log.active and self.events.add(EventName.steerSaturated)
 
-    print(line testing 546)
+
+
     # Ensure no NaNs/Infs
     for p in ACTUATOR_FIELDS:
       attr = getattr(actuators, p)
@@ -709,7 +707,7 @@ class Controls:
       cp_send.carParams = self.CP
       self.pm.send('carParams', cp_send)
 
-    print(testing controlsd)
+    print(testing controlsd line 710)
     
     # carControl
     cc_send = messaging.new_message('carControl')
@@ -757,7 +755,7 @@ class Controls:
         print("---------------")
       self.i += 1
 
-print(line testing 760)
+
 def main(sm=None, pm=None, logcan=None):
   controls = Controls(sm, pm, logcan)
   controls.controlsd_thread()
