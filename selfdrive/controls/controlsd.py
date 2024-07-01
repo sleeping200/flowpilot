@@ -706,6 +706,8 @@ class Controls:
       cp_send.carParams = self.CP
       self.pm.send('carParams', cp_send)
 
+    print(testing controlsd)
+    
     # carControl
     cc_send = messaging.new_message('carControl')
     cc_send.valid = CS.canValid
