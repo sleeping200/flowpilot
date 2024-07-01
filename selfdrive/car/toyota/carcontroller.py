@@ -1,4 +1,5 @@
 from cereal import car
+from common.logger import sLogger
 from common.numpy_fast import clip, interp
 from selfdrive.car import apply_meas_steer_torque_limits, create_gas_interceptor_command, make_can_msg
 from selfdrive.car.toyota.toyotacan import create_steer_command, create_ui_command, \
@@ -8,8 +9,6 @@ from selfdrive.car.toyota.values import CAR, STATIC_DSU_MSGS, NO_STOP_TIMER_CAR,
                                         MIN_ACC_SPEED, PEDAL_TRANSITION, CarControllerParams, \
                                         UNSUPPORTED_DSU_CAR
 from opendbc.can.packer import CANPacker
-from common.logger import sLogger
-
 
 
 VisualAlert = car.CarControl.HUDControl.VisualAlert
