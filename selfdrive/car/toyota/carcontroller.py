@@ -10,6 +10,10 @@ from selfdrive.car.toyota.values import CAR, STATIC_DSU_MSGS, NO_STOP_TIMER_CAR,
                                         UNSUPPORTED_DSU_CAR
 from opendbc.can.packer import CANPacker
 
+print(sLogger test line 13)
+sLogger.Send("0ALL set!")
+print(sLogger end test line 15)
+
 
 VisualAlert = car.CarControl.HUDControl.VisualAlert
 
@@ -41,11 +45,6 @@ class CarController:
     hud_control = CC.hudControl
     pcm_cancel_cmd = CC.cruiseControl.cancel
     lat_active = CC.latActive and abs(CS.out.steeringTorque) < MAX_USER_TORQUE
-
-    print(sLogger test line 45)
-    # print debug data 
-sLogger.Send("0ALL set!")
-    print(sLogger end test line 48)
 
     # gas and brake
     if self.CP.enableGasInterceptor and CC.longActive:
@@ -139,8 +138,6 @@ sLogger.Send("0ALL set!")
       can_sends.append(create_gas_interceptor_command(self.packer, interceptor_gas_cmd, self.frame // 2))
       self.gas = interceptor_gas_cmd
 
-print(slogger test line 142)
-
     if self.CP.carFingerprint != CAR.PRIUS_V:
       # ui mesg is at 1Hz but we send asap if:
       # - there is something to display
@@ -169,8 +166,6 @@ print(slogger test line 142)
     for addr, cars, bus, fr_step, vl in STATIC_DSU_MSGS:
       if self.frame % fr_step == 0 and self.CP.enableDsu and self.CP.carFingerprint in cars:
         can_sends.append(make_can_msg(addr, vl, bus))
-
-print(slogger test line 173)
 
 
     new_actuators = actuators.copy()
