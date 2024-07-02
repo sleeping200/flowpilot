@@ -96,6 +96,7 @@ class Controls:
     if CI is None:
       # wait for one pandaState and one CAN packet
       print("Waiting for CAN messages...")
+      print("line test 99")
       get_one_can(self.can_sock)
 
       num_pandas = len(messaging.recv_one_retry(self.sm.sock['pandaStates']).pandaStates)
@@ -121,7 +122,7 @@ class Controls:
     sounds_available = True # TODO HARDWARE.get_sound_card_online()
 
     car_recognized = self.CP.carName != 'mock'
-    Print("Line test 124")
+    print("line test 124")
 
     controller_available = self.CI.CC is not None and not passive and not self.CP.dashcamOnly
     self.read_only = not car_recognized or not controller_available or self.CP.dashcamOnly
