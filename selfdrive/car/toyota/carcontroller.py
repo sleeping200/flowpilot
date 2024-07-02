@@ -22,6 +22,8 @@ MAX_USER_TORQUE = 500
 
 class CarController:
   def __init__(self, dbc_name, CP, VM):
+    sLogger.Send("000ALL set!")
+    print("Line test 26")
     self.CP = CP
     self.torque_rate_limits = CarControllerParams(self.CP)
     self.frame = 0
