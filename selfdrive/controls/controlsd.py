@@ -62,6 +62,8 @@ class Controls:
     # Ensure the current branch is cached, otherwise the first iteration of controlsd lags
     self.branch = get_short_branch("")
     self.params = Params()
+    
+    print("line test 66")
 
     # Setup sockets
     self.pm = pm
