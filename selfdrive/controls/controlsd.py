@@ -64,7 +64,6 @@ class Controls:
     self.params = Params()
     
     print("line test 66")
-    print(f"Selected car: {self.CP.carName}")
     
     # Setup sockets
     self.pm = pm
