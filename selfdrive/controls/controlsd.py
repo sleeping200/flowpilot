@@ -64,7 +64,8 @@ class Controls:
     self.params = Params()
     
     print("line test 66")
-
+    print(f"Selected car: {self.CP.carName}")
+    
     # Setup sockets
     self.pm = pm
     if self.pm is None:
@@ -80,7 +81,7 @@ class Controls:
     if can_sock is None:
       can_timeout = None if os.environ.get('NO_CAN_TIMEOUT', False) else 20
       self.can_sock = messaging.sub_sock('can', timeout=can_timeout)
-
+    
     self.sm = sm
     if self.sm is None:
       ignore = ['driverCameraState', 'testJoystick', 'driverMonitoringState', 'radarState'] if SIMULATION else ['driverCameraState', 'testJoystick', 'driverMonitoringState']
@@ -104,6 +105,7 @@ class Controls:
       num_pandas = len(messaging.recv_one_retry(self.sm.sock['pandaStates']).pandaStates)
       experimental_long_allowed = self.params.get_bool("ExperimentalLongitudinalEnabled")
       self.CI, self.CP = get_car(self.can_sock, self.pm.sock['sendcan'], experimental_long_allowed, num_pandas)
+      print(f"Selected car: {self.CP.carName}")
     else:
       self.CI, self.CP = CI, CI.CP
 
@@ -128,6 +130,9 @@ class Controls:
 
     controller_available = self.CI.CC is not None and not passive and not self.CP.dashcamOnly
     self.read_only = not car_recognized or not controller_available or self.CP.dashcamOnly
+    # Print the selected car information
+    print(f"Selected car: {self.CP.carName}")
+
     if self.read_only:
       safety_config = car.CarParams.SafetyConfig.new_message()
       safety_config.safetyModel = car.CarParams.SafetyModel.noOutput
