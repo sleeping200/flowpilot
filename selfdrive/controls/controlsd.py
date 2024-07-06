@@ -107,7 +107,7 @@ class Controls:
       print(f"Selected car: {self.CP.carName}")
     else:
       self.CI, self.CP = CI, CI.CP
-      slog("hello from init controlsd")
+    slog("hello from init controlsd")
     self.joystick_mode = self.params.get_bool("JoystickDebugMode") or self.CP.notCar
 
     # set alternative experiences from parameters
