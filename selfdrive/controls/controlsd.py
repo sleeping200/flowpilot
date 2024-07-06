@@ -710,8 +710,6 @@ class Controls:
       cp_send = messaging.new_message('carParams')
       cp_send.carParams = self.CP
       self.pm.send('carParams', cp_send)
-
-    print(testing controlsd line 710)
     
     # carControl
     cc_send = messaging.new_message('carControl')
