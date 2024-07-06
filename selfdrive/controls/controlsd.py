@@ -99,6 +99,7 @@ class Controls:
       # wait for one pandaState and one CAN packet
       print("Waiting for CAN messages...")
       print("line test 101")
+      print(f"Selected car: {self.CP.carName}")
       get_one_can(self.can_sock)
       print("line test 103")
 
